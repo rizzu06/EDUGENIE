@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="EduGenie - a lightweight AI-powered educational assistant.">
+  <title>EduGenie — Learning Assistant</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">AI-POWERED LEARNING ASSISTANT</p>
+        <h1>Learn smarter with <span>EduGenie</span></h1>
+        <p class="subtitle">Ask questions, simplify concepts, generate quizzes, summarize study material, or build a learning path.</p>
+      </div>
+      <div class="status" id="status" aria-live="polite">Checking AI service…</div>
+    </section>
+
+    <section class="card">
+      <div class="controls">
+        <label for="task">Learning task</label>
+        <select id="task">
+          <option value="qa">Ask a question</option>
+          <option value="explain">Explain a concept</option>
+          <option value="quiz">Generate a quiz</option>
+          <option value="summarize">Summarize text</option>
+          <option value="learn">Recommend a learning path</option>
+        </select>
+      </div>
+
+      <div class="field-row hidden" id="level-row">
+        <div class="field">
+          <label for="level">Learner level</label>
+          <select id="level">
+            <option>beginner</option>
+            <option>intermediate</option>
+            <option>advanced</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="timeframe">Timeframe</label>
+          <input id="timeframe" value="8 weeks" maxlength="80">
+        </div>
+      </div>
+
+      <div class="field-row hidden" id="quiz-row">
+        <div class="field compact">
+          <label for="num-questions">Questions</label>
+          <input id="num-questions" type="number" min="1" max="10" value="3">
+        </div>
+      </div>
+
+      <div class="field">
+        <label for="input">Your input</label>
+        <textarea id="input" rows="9" maxlength="20000" placeholder="Example: Explain the Pythagoras theorem with a simple example."></textarea>
+        <div class="counter"><span id="count">0</span> / 20,000</div>
+      </div>
+
+      <div class="actions">
+        <button id="submit" type="button">Generate answer</button>
+        <button id="clear" class="secondary" type="button">Clear</button>
+      </div>
+    </section>
+
+    <section class="result-card" id="result-card" hidden>
+      <div class="result-head">
+        <h2>EduGenie result</h2>
+        <button id="copy" class="icon-button" type="button">Copy</button>
+      </div>
+      <div id="result" class="result" aria-live="polite"></div>
+    </section>
+
+    <p class="footer">EduGenie · FastAPI + Gemini + optional local LaMini-Flan-T5</p>
+  </main>
+  <script src="/static/app.js" defer></script>
+</body>
+</html>
